@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+/* タブ */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.tab-button:hover {
+    color: #667eea;
+}
+
+.tab-button.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+    font-weight: bold;
+}
+
+/* パネル */
+.panel {
+    display: none;
+}
+
+.panel.active {
+    display: block;
+}
+
+/* 表示エリア */
+.display {
+    font-size: 64px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin: 30px 0;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 2px;
+}
+
+/* タイマー入力 */
+.timer-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #666;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 80px;
+    padding: 10px;
+    font-size: 24px;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-variant-numeric: tabular-nums;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* コントロールボタン */
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    flex: 1;
+    min-width: 100px;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-start {
+    background: #4caf50;
+    color: white;
+}
+
+.btn-start:hover:not(:disabled) {
+    background: #45a049;
+}
+
+.btn-stop {
+    background: #f44336;
+    color: white;
+}
+
+.btn-stop:hover:not(:disabled) {
+    background: #da190b;
+}
+
+.btn-reset {
+    background: #2196f3;
+    color: white;
+}
+
+.btn-reset:hover:not(:disabled) {
+    background: #0b7dda;
+}
+
+.btn-lap {
+    background: #ff9800;
+    color: white;
+}
+
+.btn-lap:hover:not(:disabled) {
+    background: #e68900;
+}
+
+/* ラップタイム */
+.lap-times {
+    margin-top: 30px;
+}
+
+.lap-times h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#lap-list {
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#lap-list li {
+    padding: 12px;
+    margin-bottom: 8px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    font-size: 18px;
+    font-variant-numeric: tabular-nums;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#lap-list li:first-child {
+    background: #fff3cd;
+    font-weight: bold;
+}
+
+/* タイマー終了時の視覚的通知 */
+.timer-finished {
+    animation: flash 0.5s infinite;
+}
+
+@keyframes flash {
+    0%, 100% {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    50% {
+        background: linear-gradient(135deg, #f44336 0%, #ff6b6b 100%);
+    }
+}
+
+.timer-finished .container {
+    animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+.timer-finished .display {
+    color: #f44336;
+    animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* レスポンシブ */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .display {
+        font-size: 48px;
+    }
+
+    .timer-inputs {
+        gap: 20px;
+    }
+
+    .input-group input {
+        width: 70px;
+        font-size: 20px;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .display {
+        font-size: 36px;
+    }
+
+    .input-group input {
+        width: 60px;
+        font-size: 18px;
+    }
+}
