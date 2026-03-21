@@ -256,6 +256,22 @@ h1 {
     }
 }
 
+/* フッター（by さんべい） */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+footer .brand {
+    color: #333;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
 /* レスポンシブ */
 @media (max-width: 600px) {
     .container {
